@@ -1,0 +1,58 @@
+server:
+    port: 8080
+    servlet:
+        context-path: /
+        encodeing:
+            charset: UTF-8
+        session:
+            timeout: 480m
+        error:
+          whitelabel:
+              enabled: false
+          include-stacktrace: always
+
+spring:
+    servlet:
+        multipart:
+          location: /fileName/
+          max-file-size: 50MB
+          max-request-size: 50MB
+
+    main:
+        web-application-type: servlet
+    datasource:
+        url: jdbc:mariadb://localhost/database_name
+        username: id
+        password: pw
+        driver-class-name: org.mariadb.jdbc.Driver
+    jpa:
+        databaseplatform: org.hibernate.dialect.MariaDB103Dialect
+        hiberante:
+            ddl-auto: update
+            naming:
+              physical-strategy:
+              implicit-stragtgy:
+        open-in-view: true
+        showsql: true
+
+    sql:
+        init:
+            mode: never
+
+   thymeleaf:
+      prefix: classpath:temlates/
+      suffix: .html
+      cache: true
+
+   devtools:
+      liverelode:
+          enabled: false
+          add-properties: false
+          restart:
+              enabled: false
+   web:
+     resources:
+        chain:
+            compressed: true
+            enabled: true
+            cache: true
